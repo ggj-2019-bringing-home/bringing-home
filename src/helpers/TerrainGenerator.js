@@ -54,7 +54,14 @@ class TerrainGenerator {
       this.get(x + size, y + size),   // lower right
       this.get(x - size, y + size)    // lower left
     ]);
-    this.set(x, y, ave + offset);
+    const val = ave + offset;
+    if(val > 255) {
+      this.set(x, y, 255);
+    } else if(val < 0) {
+      this.set(x, y, 0);
+    } else {
+      this.set(x, y, val);
+    }
   }
 
   diamond(x, y, size, offset) {
@@ -64,7 +71,14 @@ class TerrainGenerator {
       this.get(x, y + size),      // bottom
       this.get(x - size, y)       // left
     ]);
-    this.set(x, y, ave + offset);
+    const val = ave + offset;
+    if(val > 255) {
+      this.set(x, y, 255);
+    } else if(val < 0) {
+      this.set(x, y, 0);
+    } else {
+      this.set(x, y, val);
+    }
   }
 }
 
