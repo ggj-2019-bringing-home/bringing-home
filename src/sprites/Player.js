@@ -46,4 +46,18 @@ export default class Player extends Phaser.GameObjects.Graphics {
         }
         this.circle.radius = this.size;
     }
+
+    collide(type, level) {
+        if (type === 'flare') {
+            switch (level) {
+                case 0:
+                    this.grow(1);
+                    break;
+                case 1:
+                    //this.addResource('water', 1);
+                    break;
+
+            }
+        }
+    }
 }

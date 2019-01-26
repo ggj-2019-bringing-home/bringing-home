@@ -1,9 +1,9 @@
 const POSSIBLE_PARTICLES = [
     'white',
+    'blue',
     'green',
     'red',
-    'yellow',
-    'blue'
+    'yellow'
 ];
 
 export default class Space extends Phaser.GameObjects.Graphics {
@@ -21,7 +21,8 @@ export default class Space extends Phaser.GameObjects.Graphics {
                 (particle.y - this.deathZone.y) * (particle.y - this.deathZone.y);
             const collision = distq <= (this.deathZone.circle.radius + this.radius) * (this.deathZone.circle.radius + this.radius);
             if (collision) {
-                this.deathZone.grow(1);
+                const flareLvl = POSSIBLE_PARTICLES.findIndex(e => e === particle.frame.name);
+                this.deathZone.collide('flare', flareLvl);
             }
         };
 
@@ -32,7 +33,7 @@ export default class Space extends Phaser.GameObjects.Graphics {
             speed: { min: -.1, max: .1 },
             lifespan: 7000,
             quantity: .3,
-            scale: { min: .1, max: .09 },
+            scale: { min: .01, max: .1 },
             alpha: { start: 1, end: .5 },
             blendMode: 'ADD',
             emitZone: { source: this.emitZone },
@@ -42,4 +43,10 @@ export default class Space extends Phaser.GameObjects.Graphics {
         scene.add.existing(this);
     }
 
+    riseLevel() {
+        if (this.level < POSSIBLE_PARTICLES.length - 1) {
+            this.level++;
+        }
+        this.particleTypes.push(POSSIBLE_PARTICLES[this.level]);
+    }
 }
