@@ -30,7 +30,6 @@ class PlanetTexture {
   refresh() {
     this.context.putImageData(this.pixels, 0, 0);
     this.texture.refresh();
-    console.log(this.pixels);
   }
 }
 
