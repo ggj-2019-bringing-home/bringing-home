@@ -12,7 +12,7 @@ export default class Hud extends Phaser.GameObjects.Graphics {
             yellow: 0xffff00
         };
         this.planet = planet;
-        this.displayZone = new Phaser.Geom.Rectangle((scene.size - this.width, scene.size - this.height, this.width, this.height);
+        this.displayZone = new Phaser.Geom.Rectangle(scene.size - this.width, scene.size - this.height, this.width, this.height);
 
         // Frame
         this.gfx = scene.add.graphics();
