@@ -1,4 +1,4 @@
-const RING_PER_TICK = .003
+const RING_PER_TICK = .007
 const TIMER_PER_TICK = .01
 
 export default class Player extends Phaser.GameObjects.Graphics {
