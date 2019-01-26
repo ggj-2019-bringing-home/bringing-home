@@ -1,5 +1,5 @@
 const RING_PER_TICK = .007
-const TIMER_PER_TICK = .01
+const TIMER_PER_TICK = .05
 
 export default class Player extends Phaser.GameObjects.Graphics {
     constructor (scene, x, y, ring) {
@@ -28,7 +28,9 @@ export default class Player extends Phaser.GameObjects.Graphics {
         if (this.ring < this.curRingPosition) {
             this.curRingPosition -= RING_PER_TICK;
         }
-        this.timer += TIMER_PER_TICK;
+        this.timer += TIMER_PER_TICK - (0.005 + TIMER_PER_TICK)*(Math.log(1+this.curRingPosition) / Math.log(10));
+        if(this.timer <= 0)
+            this.timer = 0;
         this.gfx.clear();
         this.gfx.fillStyle(0x666666, 1);
         this.circle.x = (32 + (this.curRingPosition * 64)) * Math.cos(this.timer) + (this.scene.size / 2);
