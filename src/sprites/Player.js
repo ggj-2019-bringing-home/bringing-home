@@ -47,6 +47,9 @@ export default class Player extends Phaser.GameObjects.Graphics {
 
     grow(value) {
         this.size += value;
+        if (this.size >= 50) {
+            this.size = 50;
+        }
         if (this.size < 2) {
             this.size = 2;
         }
@@ -60,11 +63,17 @@ export default class Player extends Phaser.GameObjects.Graphics {
             switch (level) {
                 case 0:
                     this.grow(1);
+                    this.rock += 1;
                     break;
                 case 1:
-                    //this.addResource('water', 1);
+                    this.water += 1;
                     break;
-
+                case 2:
+                    this.plant += 1;
+                    break;
+                case 3:
+                    this.animal += 1;
+                    break;  
             }
         }
     }

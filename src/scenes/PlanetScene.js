@@ -30,8 +30,8 @@ class PlanetScene extends Phaser.Scene {
         this.cameras.main.setZoom(this.zoom);
 
         this.keys = {
-            'plus': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.PLUS),
-            'minus': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.MINUS),
+            'plus': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT),
+            'minus': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT),
             'up': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
             'down': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN),
             'a': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
