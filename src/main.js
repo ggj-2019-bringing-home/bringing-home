@@ -1,12 +1,13 @@
 import 'phaser';
 import PlanetScene from './scenes/PlanetScene';
+import UiScene from "./scenes/UiScene";
 
 const config = {
     // For more settings see <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
     type: Phaser.WEBGL,
     parent: 'content',
-    width: 1280,
-    height: 1024,
+    width: 1024,
+    height: 768,
     physics: {
         default: 'arcade',
         arcade: {
@@ -14,7 +15,8 @@ const config = {
         }
     },
     scene: [
-        PlanetScene
+        PlanetScene,
+        UiScene
     ]
 };
 

@@ -1,9 +1,8 @@
 import Player from '../sprites/Player'
 import Space from '../sprites/Space'
-import Hud from "../sprites/Hud";
 
 class PlanetScene extends Phaser.Scene {
-    constructor(test) {
+    constructor() {
         super({
             key: 'PlanetScene'
         })
@@ -22,12 +21,12 @@ class PlanetScene extends Phaser.Scene {
     }
 
     create() {
-        this.scene.bringToTop()
-        const graphics = this.add.graphics()
+        this.scene.bringToTop();
+        const graphics = this.add.graphics();
 
-        this.cameras.main.setBounds(0, 0, this.size, this.size)
-        this.zoom = 3.5
-        this.cameras.main.setZoom(this.zoom)
+        this.cameras.main.setBounds(0, 0, this.size, this.size);
+        this.zoom = 3.5;
+        this.cameras.main.setZoom(this.zoom);
 
         this.keys = {
             'plus': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.PLUS),
@@ -38,12 +37,23 @@ class PlanetScene extends Phaser.Scene {
             'y': this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Y)
         };
 
-        let sh = window.screen.availHeight
-        let sw = window.screen.availWidth
+        let sh = window.screen.availHeight;
+        let sw = window.screen.availWidth;
 
 
-        graphics.fillStyle(0xcccc00, .8)
-        graphics.fillCircleShape(new Phaser.Geom.Circle(this.size / 2, this.size / 2, 32))
+        graphics.fillStyle(0xcccc00, .8);
+        graphics.fillCircleShape(new Phaser.Geom.Circle(this.size / 2, this.size / 2, 32));
+
+        var graphics = this.add.graphics();
+        var color = 0xffff00;
+        var thickness = 2;
+        var alpha = 1;
+
+        graphics.lineStyle(thickness, color, alpha);
+        graphics.strokeRect(32, 32, 256, 256);
+
+        graphics.generateTexture("test");
+        graphics.destroy();
 
         var dudeData = [
             '.......3.....',
@@ -62,9 +72,9 @@ class PlanetScene extends Phaser.Scene {
             '......777.5..',
             '.....6..7....',
             '.....7..7....'
-        ]
-        this.textures.generate('dude', {data: dudeData, pixelWidth: 4, pixelHeight: 4})
-        this.add.image(this.size / 2, this.size / 2, 'dude').setAlpha(0.4)
+        ];
+        this.textures.generate('dude', {data: dudeData, pixelWidth: 4, pixelHeight: 4});
+        this.add.image(this.size / 2, this.size / 2, 'dude').setAlpha(0.4);
 
         graphics.lineStyle(1, 0xffffff, .4);
         for (let l = 64 + 32; l < this.size / 2; l += 64) {
@@ -80,15 +90,12 @@ class PlanetScene extends Phaser.Scene {
             callbackScope: this.player,
             loop: true
         });
-
+        //this.player.
         this.space = new Space(this, this.player);
-        this.hud = new Hud(this, this.player);
-        this.time.addEvent({
-            delay: 25,
-            callback: this.hud.update,
-            callbackScope: this.hud,
-            loop: true
-        });
+        this.space.riseLevel();
+        this.space.riseLevel();
+        this.space.riseLevel();
+        this.space.riseLevel();
 
         this.cameras.main.startFollow(this.player)
     }
@@ -96,46 +103,31 @@ class PlanetScene extends Phaser.Scene {
     update(time, delta) {
         if (this.keys) {
             if (this.keys.plus.isDown) {
-                this.player.switchRing(1)
+                this.player.switchRing(1);
                 this.keys.plus.isDown = false
             }
             if (this.keys.minus.isDown) {
-                this.player.switchRing(-1)
+                this.player.switchRing(-1);
                 this.keys.minus.isDown = false
             }
             if (this.keys.up.isDown) {
-                this.zoom += .2
+                this.zoom += .2;
                 this.keys.up.isDown = false
             }
             if (this.keys.down.isDown) {
-                this.zoom -= .2
+                this.zoom -= .2;
                 this.keys.down.isDown = false
             }
-            this.cameras.main.setZoom(this.zoom)
+            this.cameras.main.setZoom(this.zoom);
             if (this.keys.a.isDown) {
-                this.player.grow(1)
+                this.player.grow(1);
                 this.keys.a.isDown = false
             }
             if (this.keys.y.isDown) {
-                this.player.grow(-1)
+                this.player.grow(-1);
                 this.keys.y.isDown = false
             }
         }
-    }
-
-    startGame() {
-        this.scene.stop('GameScene')
-        this.registry.set('attractMode', false)
-        this.scene.start('GameScene')
-    }
-
-    restartScene() {
-        //        this.attractMode.stop();
-        this.scene.stop('GameScene')
-        this.scene.launch('GameScene')
-        this.scene.bringToTop()
-
-        this.registry.set('restartScene', false)
     }
 }
 

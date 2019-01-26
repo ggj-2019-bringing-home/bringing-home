@@ -35,10 +35,15 @@ export default class Space extends Phaser.GameObjects.Graphics {
         scene.add.existing(this);
     }
 
-    riseLevel() {
-        if (this.level < scene.POSSIBLE_PARTICLES.length - 1) {
-            this.level++;
+    riseLevel(sub = false) {
+        this.level += sub ? -1 : 1;
+        if (this.level < 0) {
+            this.level = 0;
         }
-        this.particleTypes.push(scene.POSSIBLE_PARTICLES[this.level]);
+        if (this.level >= this.scene.POSSIBLE_PARTICLES.length) {
+            this.level = this.scene.POSSIBLE_PARTICLES - 1;
+        }
+        this.particleTypes.push(this.scene.POSSIBLE_PARTICLES[this.level]);
+        this.emitter.setFrame(this.particleTypes);
     }
 }

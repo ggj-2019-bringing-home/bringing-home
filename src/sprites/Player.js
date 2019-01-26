@@ -54,6 +54,7 @@ export default class Player extends Phaser.GameObjects.Graphics {
     collide(type, level) {
         if (type === 'flare') {
             this.values[this.scene.POSSIBLE_PARTICLES[level]]++;
+            this.scene.sys.events.emit('collision');
             switch (level) {
                 case 0:
                     this.grow(1);
