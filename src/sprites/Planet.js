@@ -7,8 +7,15 @@ class Planet extends Phaser.GameObjects.Image {
     this.size = size;
     this.max = size - 1;
     this.map = [];
-    this.planetTexture = new PlanetTexture(scene, this.size, 'planet');
+
     this.terrainGenerator = new TerrainGenerator(this.size);
+    for (let i in this.terrainGenerator.map) {
+      this.map.push({
+        height: this.terrainGenerator.map[i],
+      })
+    }
+
+    this.planetTexture = new PlanetTexture(scene, this.size, 'planet');
     this.applyTerrain();
     this.setTexture('planet');
     this.setPosition(x, y);
@@ -22,7 +29,7 @@ class Planet extends Phaser.GameObjects.Image {
   applyTerrain() {
     for (let x = 0; x < this.size; x++) {
       for (let y = 0; y < this.size; y++) {
-        let height = this.terrainGenerator.get(x, y);
+        let height = this.get(x, y).height;
         if (height < 0) {
           this.planetTexture.setPixel(x, y, 0, 0, 155, 255);
         }
