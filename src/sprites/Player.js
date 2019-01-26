@@ -13,6 +13,10 @@ export default class Player extends Phaser.GameObjects.Graphics {
         this.curRingPosition = ring;
         this.size = 4;
         this.circle = new Phaser.Geom.Circle(x, y, this.size);
+        this.values = scene.POSSIBLE_PARTICLES.reduce((prev, cur) => {
+            prev[cur] = 0;
+            return prev;
+        }, {});
 
         scene.add.existing(this);
     }
@@ -49,6 +53,7 @@ export default class Player extends Phaser.GameObjects.Graphics {
 
     collide(type, level) {
         if (type === 'flare') {
+            this.values[this.scene.POSSIBLE_PARTICLES[level]]++;
             switch (level) {
                 case 0:
                     this.grow(1);

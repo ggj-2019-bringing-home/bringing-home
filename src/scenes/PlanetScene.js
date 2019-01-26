@@ -1,19 +1,27 @@
 import Player from '../sprites/Player'
 import Space from '../sprites/Space'
+import Hud from "../sprites/Hud";
 
 class PlanetScene extends Phaser.Scene {
-    constructor (test) {
+    constructor(test) {
         super({
             key: 'PlanetScene'
         })
     }
 
-    preload () {
+    preload() {
         this.load.atlas('flares', 'assets/flares.png', 'assets/flares.json');
         this.size = 2048
+        this.POSSIBLE_PARTICLES = [
+            'white',
+            'blue',
+            'green',
+            'red',
+            'yellow'
+        ];
     }
 
-    create () {
+    create() {
         this.scene.bringToTop()
         const graphics = this.add.graphics()
 
@@ -55,30 +63,37 @@ class PlanetScene extends Phaser.Scene {
             '.....6..7....',
             '.....7..7....'
         ]
-        this.textures.generate('dude', { data: dudeData, pixelWidth: 4, pixelHeight: 4 })
+        this.textures.generate('dude', {data: dudeData, pixelWidth: 4, pixelHeight: 4})
         this.add.image(this.size / 2, this.size / 2, 'dude').setAlpha(0.4)
 
-        graphics.lineStyle(1, 0xffffff, .8)
+        graphics.lineStyle(1, 0xffffff, .4);
         for (let l = 64 + 32; l < this.size / 2; l += 64) {
             graphics.strokeCircleShape(new Phaser.Geom.Circle(this.size / 2, this.size / 2, l))
         }
 
-        let ring = 2
-        let dist = 32 + (64 * ring)
-        this.player = new Player(this, (this.size / 2) + dist, this.size / 2, ring)
+        let ring = 2;
+        let dist = 32 + (64 * ring);
+        this.player = new Player(this, (this.size / 2) + dist, this.size / 2, ring);
         this.time.addEvent({
             delay: 16.667,
             callback: this.player.update,
-            callbackScope:this.player,
+            callbackScope: this.player,
             loop: true
-        })
+        });
 
-        this.space = new Space(this, this.size, this.player);
+        this.space = new Space(this, this.player);
+        this.hud = new Hud(this, this.player);
+        this.time.addEvent({
+            delay: 25,
+            callback: this.hud.update,
+            callbackScope: this.hud,
+            loop: true
+        });
 
         this.cameras.main.startFollow(this.player)
     }
 
-    update (time, delta) {
+    update(time, delta) {
         if (this.keys) {
             if (this.keys.plus.isDown) {
                 this.player.switchRing(1)
@@ -108,13 +123,13 @@ class PlanetScene extends Phaser.Scene {
         }
     }
 
-    startGame () {
+    startGame() {
         this.scene.stop('GameScene')
         this.registry.set('attractMode', false)
         this.scene.start('GameScene')
     }
 
-    restartScene () {
+    restartScene() {
         //        this.attractMode.stop();
         this.scene.stop('GameScene')
         this.scene.launch('GameScene')
