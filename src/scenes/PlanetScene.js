@@ -10,6 +10,7 @@ class PlanetScene extends Phaser.Scene {
 
     preload() {
         this.load.atlas('flares', 'assets/flares.png', 'assets/flares.json');
+        this.load.atlas('rocks', 'assets/rocks.png', 'assets/rocks.json');
         this.size = 2048
         this.POSSIBLE_PARTICLES = [
             'white',
@@ -43,27 +44,6 @@ class PlanetScene extends Phaser.Scene {
 
         graphics.fillStyle(0xcccc00, .8);
         graphics.fillCircleShape(new Phaser.Geom.Circle(this.size / 2, this.size / 2, 32));
-
-        var dudeData = [
-            '.......3.....',
-            '......333....',
-            '....5343335..',
-            '...332333333.',
-            '..33333333333',
-            '..37773337773',
-            '..38587778583',
-            '..38588888583',
-            '..37888888873',
-            '...333333333.',
-            '.F....5556...',
-            '3E34.6757.6..',
-            '.E.55.666.5..',
-            '......777.5..',
-            '.....6..7....',
-            '.....7..7....'
-        ];
-        this.textures.generate('dude', {data: dudeData, pixelWidth: 4, pixelHeight: 4});
-        this.add.image(this.size / 2, this.size / 2, 'dude').setAlpha(0.4);
 
         graphics.lineStyle(1, 0xffffff, .4);
         for (let l = 64 + 32; l < this.size / 2; l += 64) {

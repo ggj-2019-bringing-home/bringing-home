@@ -1,0 +1,249 @@
+{
+  "frames": {
+    "rocks-0-0": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 153,
+        "y": 300,
+        "w": 107,
+        "h": 106
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 107,
+        "h": 106
+      },
+      "sourceSize": {
+        "w": 107,
+        "h": 106
+      }
+    },
+    "rocks-0-1": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 2,
+        "y": 403,
+        "w": 94,
+        "h": 140
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 94,
+        "h": 140
+      },
+      "sourceSize": {
+        "w": 96,
+        "h": 140
+      }
+    },
+    "rocks-1-0": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 80,
+        "y": 151,
+        "w": 99,
+        "h": 108
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 99,
+        "h": 108
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 108
+      }
+    },
+    "rocks-1-1": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 2,
+        "y": 254,
+        "w": 76,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 76,
+        "h": 147
+      },
+      "sourceSize": {
+        "w": 76,
+        "h": 147
+      }
+    },
+    "rocks-2-0": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 181,
+        "y": 114,
+        "w": 99,
+        "h": 83
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 99,
+        "h": 83
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 86
+      }
+    },
+    "rocks-2-1": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 98,
+        "y": 425,
+        "w": 108,
+        "h": 118
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 108,
+        "h": 118
+      },
+      "sourceSize": {
+        "w": 108,
+        "h": 118
+      }
+    },
+    "rocks-3-0": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 111,
+        "y": 18,
+        "w": 94,
+        "h": 94
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 94,
+        "h": 94
+      },
+      "sourceSize": {
+        "w": 94,
+        "h": 96
+      }
+    },
+    "rocks-3-1": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 80,
+        "y": 261,
+        "w": 71,
+        "h": 140
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 71,
+        "h": 140
+      },
+      "sourceSize": {
+        "w": 71,
+        "h": 140
+      }
+    },
+    "rocks-4-0": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 181,
+        "y": 199,
+        "w": 94,
+        "h": 99
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 94,
+        "h": 99
+      },
+      "sourceSize": {
+        "w": 94,
+        "h": 99
+      }
+    },
+    "rocks-4-1": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 2,
+        "y": 116,
+        "w": 76,
+        "h": 136
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 76,
+        "h": 136
+      },
+      "sourceSize": {
+        "w": 76,
+        "h": 136
+      }
+    },
+    "rocks-5-0": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 107,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 107,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 107,
+        "h": 112
+      }
+    },
+    "rocks-5-1": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 208,
+        "y": 408,
+        "w": 73,
+        "h": 135
+      },
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 0,
+        "w": 73,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 77,
+        "h": 135
+      }
+    }
+  },
+  "meta": {
+    "app": "Phaser Editor",
+    "version": "1",
+    "image": "rocks.png"
+  }
+}

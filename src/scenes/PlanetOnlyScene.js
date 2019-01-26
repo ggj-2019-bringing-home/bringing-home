@@ -15,7 +15,7 @@ class PlanetOnlyScene extends Phaser.Scene {
     let sw = this.game.config.width;
     let sh = this.game.config.height;
 
-    this.planet = new Planet(this, sw/2, sh/2, this.size).setScale(10);
+    this.planet = new Planet(this, sw/2, sh/2, this.size).setScale(1);
     this.children.add(this.planet);
   }
 
