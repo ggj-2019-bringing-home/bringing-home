@@ -80,6 +80,7 @@ class GameScene extends Phaser.Scene {
         // Populate enemyGroup, powerUps, pipes and destinations from object layers
         this.parseObjectLayers();
 
+
         // this.keys will contain all we need to control Mario.
         // Any key could just replace the default (like this.key.jump)
         this.keys = {
