@@ -44,17 +44,6 @@ class PlanetScene extends Phaser.Scene {
         graphics.fillStyle(0xcccc00, .8);
         graphics.fillCircleShape(new Phaser.Geom.Circle(this.size / 2, this.size / 2, 32));
 
-        var graphics = this.add.graphics();
-        var color = 0xffff00;
-        var thickness = 2;
-        var alpha = 1;
-
-        graphics.lineStyle(thickness, color, alpha);
-        graphics.strokeRect(32, 32, 256, 256);
-
-        graphics.generateTexture("test");
-        graphics.destroy();
-
         var dudeData = [
             '.......3.....',
             '......333....',
