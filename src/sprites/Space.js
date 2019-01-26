@@ -12,12 +12,12 @@ export default class Space extends Phaser.GameObjects.Graphics {
             this.particleTypes.push(`rocks-${i}-1`);
         }
 
-        this.hitCheck = (particle) => {
+        this.hitCheck = (particle, color) => {
             const distq = (particle.x - this.deathZone.x) * (particle.x - this.deathZone.x) +
                 (particle.y - this.deathZone.y) * (particle.y - this.deathZone.y);
             const collision = distq <= (this.deathZone.circle.radius + this.radius) * (this.deathZone.circle.radius + this.radius);
             if (collision) {
-                const flareLvl = scene.POSSIBLE_PARTICLES.findIndex(e => e === particle.frame.name);
+                const flareLvl = scene.POSSIBLE_PARTICLES.findIndex(e => e === color);
                 this.deathZone.collide('flare', flareLvl);
             }
         };
@@ -45,7 +45,7 @@ export default class Space extends Phaser.GameObjects.Graphics {
             blendMode: 'SUB',
                 emitZone: { source: this.emitZone },
             deathZone: { type: 'onEnter', source: this.deathZone.circle },
-            deathCallback: this.hitCheck
+            deathCallback: (p) => this.hitCheck(p, color)
         });
     }
 
