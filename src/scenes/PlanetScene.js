@@ -162,8 +162,8 @@ class PlanetScene extends Phaser.Scene {
         //this.player.
         this.space = new Space(this, this.player);
         this.space.riseLevel();
-        if (cfg.level > 1) this.space.riseLevel();
-        if (cfg.level > 2) this.space.riseLevel() && this.space.riseLevel();
+      /*  if (cfg.level > 1) this.space.riseLevel();
+        if (cfg.level > 2) this.space.riseLevel() && this.space.riseLevel();*/
 
 
         this.soundHdl.start();
