@@ -16,18 +16,17 @@ class Planet extends Phaser.GameObjects.Image {
         this.max = size - 1;
         this.map = [];
         this.circle = circle;
+        this.planetTexture = new PlanetTexture(this.scene, this.size, 'planet');
 
-        this.terrainGenerator = new TerrainGenerator(this.size);
+        this.terrainGenerator = new TerrainGenerator(this.size).start();
+        this.map = [];
         for (let i in this.terrainGenerator.map) {
             this.map.push({
                 height: this.terrainGenerator.map[i],
                 spicies: {},
             })
         }
-
-        this.planetTexture = new PlanetTexture(scene, this.size, 'planet');
-        this.applyTerrain();
-        this.setTexture('planet');
+        this.applyTerrain(150);
         this.setPosition(x, y);
 
         this.scene.time.addEvent({
@@ -36,6 +35,14 @@ class Planet extends Phaser.GameObjects.Image {
             callbackScope: this,
             loop: true
         });
+        this.setTexture('planet');
+    }
+
+    collectFirstWater() {
+        this.applyTerrain(0);
+    }
+
+    collectFirstPlant() {
         for (let i = 0; i < 5; i++) {
             this.map[parseInt((this.map.length - 1) * Math.random())].spicies = {
                 'plant': {
@@ -50,10 +57,11 @@ class Planet extends Phaser.GameObjects.Image {
         return this.map[x + this.size * y];
     }
 
-    applyTerrain() {
+    applyTerrain(cap) {
         for (let x = 0; x < this.size; x++) {
             for (let y = 0; y < this.size; y++) {
                 let height = this.get(x, y).height;
+                height = cap + (height / 255) * (255-cap);
                 if (height < 0) {
                     this.planetTexture.setPixel(x, y, 0, 0, 155, 255);
                 }

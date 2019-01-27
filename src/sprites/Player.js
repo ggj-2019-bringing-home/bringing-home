@@ -75,6 +75,14 @@ export default class Player extends Phaser.GameObjects.Graphics {
         if (type === 'flare') {
             this.values[this.scene.POSSIBLE_PARTICLES[level]]++;
             this.scene.sys.events.emit('collision');
+            if (this.values.blue === 10) {
+                // collected the first plant
+                this.planet.collectFirstWater();
+            }
+            if (this.values.green === 1) {
+                // collected the first plant
+                this.planet.collectFirstPlant();
+            }
             if (this.values.white > 20) {
                 let babol = this.values.white+this.values.blue;
                 babol = this.values.white/babol;

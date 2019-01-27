@@ -4,14 +4,19 @@ class TerrainGenerator {
     this.max = this.size - 1;
     this.map = new Float32Array(this.size * this.size);
 
-    this.set(0, 0, Math.floor(Math.random() * 100));
-    this.set(this.max, 0, Math.floor(Math.random() * 100));
-    this.set(this.max, this.max, Math.floor(Math.random() * 100));
-    this.set(0, this.max, Math.floor(Math.random() * 100));
+  }
 
-    this.divide(this.max);
-    console.log(Math.max.apply(null, this.map));
-    console.log(Math.min.apply(null, this.map));
+  start(cfg = {}) {
+      this.minVal = cfg.min || 0;
+      this.maxVal = cfg.max || 255;
+      this.map = new Float32Array(this.size * this.size);
+      this.set(0, 0, Math.floor(Math.random() * 100));
+      this.set(this.max, 0, Math.floor(Math.random() * 100));
+      this.set(this.max, this.max, Math.floor(Math.random() * 100));
+      this.set(0, this.max, Math.floor(Math.random() * 100));
+
+      this.divide(this.max);
+      return this;
   }
 
   get(x, y) {
@@ -55,10 +60,10 @@ class TerrainGenerator {
       this.get(x - size, y + size)    // lower left
     ]);
     const val = ave + offset;
-    if(val > 255) {
-      this.set(x, y, 255);
-    } else if(val < 0) {
-      this.set(x, y, 0);
+    if(val > this.maxVal) {
+      this.set(x, y, this.maxVal);
+    } else if(val < this.minVal) {
+      this.set(x, y, this.minVal);
     } else {
       this.set(x, y, val);
     }
@@ -72,10 +77,10 @@ class TerrainGenerator {
       this.get(x - size, y)       // left
     ]);
     const val = ave + offset;
-    if(val > 255) {
-      this.set(x, y, 255);
-    } else if(val < 0) {
-      this.set(x, y, 0);
+    if(val > this.maxVal) {
+      this.set(x, y, this.maxVal);
+    } else if(val < this.minVal) {
+      this.set(x, y, this.minVal);
     } else {
       this.set(x, y, val);
     }
