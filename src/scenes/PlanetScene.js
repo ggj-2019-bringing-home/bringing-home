@@ -155,11 +155,15 @@ class PlanetScene extends Phaser.Scene {
         //this.player.
         this.space = new Space(this, this.player);
         this.space.riseLevel();
-        this.space.riseLevel();
-        this.space.riseLevel();
-        this.space.riseLevel();
 
+
+        this.events.on('collision', this.collisionDetected, this);
+        this.events.on('message', (...params) => console.log(params), this);
         this.cameras.main.startFollow(this.player)
+    }
+
+    collisionDetected(...params) {
+        console.log(params);
     }
 
     update(time, delta) {

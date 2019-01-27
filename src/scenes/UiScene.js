@@ -57,7 +57,6 @@ class UiScene extends Phaser.Scene {
         });
 
         this.game.events.on('collision', () => {
-            console.log("Collide");
             const hud = this;
             Object.keys(this.colors).forEach(c => hud.texts[c].setText(`■: ${hud.game.player.values[c]}`));
         }, this);
