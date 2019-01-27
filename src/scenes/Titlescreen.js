@@ -6,7 +6,7 @@ export default class Titlescreen extends Phaser.Scene {
     }
 
     preload() {
-
+        this.load.image('logo', 'assets/logo.png');
     }
 
     create() {
@@ -18,16 +18,17 @@ export default class Titlescreen extends Phaser.Scene {
         // Texts
         this.add.text(
             this.game.config.width / 6,
-            this.game.config.height / 5,
+            100,
             'BRINGING HOME',
             {
                 font: '60px Verdana',
                 fill: '#D5C8C8'
             }
         );
+        this.add.image(this.game.config.width / 2, this.game.config.height / 2 + 50, 'logo');
         this.add.text(
             this.game.config.width / 6,
-            2 * (this.game.config.height / 5),
+            this.game.config.height - 100,
             'Press start to play\n' +
             'Or if you don\'t find start, click.',
             {
