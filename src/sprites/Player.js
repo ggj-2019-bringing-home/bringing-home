@@ -110,6 +110,10 @@ export default class Player extends Phaser.GameObjects.Graphics {
                 this.levelactual++;
                 this.scene.space.riseLevel();
             }
+            if (this.values.red >= 25 && this.levelactual == 3) {
+                this.levelactual++;
+                this.scene.space.riseLevel();
+            }
 /*            if (the plant we wants && this.levelactual == 2) {
                 this.levelactual++;
                 this.space.riseLevel();
