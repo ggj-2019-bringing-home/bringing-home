@@ -1,3 +1,5 @@
+import Planet from "./Planet";
+
 const RING_PER_TICK = .007
 const TIMER_PER_TICK = .05
 
@@ -6,13 +8,18 @@ export default class Player extends Phaser.GameObjects.Graphics {
         super(scene, {x, y});
 
         this.timer = 0;
-        this.gfx = this.scene.add.graphics();
+        this.gfx = this.scene.make.graphics();
         this.gfx.fillStyle(0x666666, 1);
         this.ring = ring;
         // The position changes during change <- 3am!
         this.curRingPosition = ring;
         this.size = 4;
         this.circle = new Phaser.Geom.Circle(x, y, this.size);
+        this.gfx.fillStyle(0xffffff, 1);
+        this.gfx.fillCircleShape(this.circle);
+        this.planet = new Planet(this.scene, x, y, 129, this.circle);
+        this.planet.mask = new Phaser.Display.Masks.GeometryMask(this.scene, this.gfx);
+        this.scene.add.existing(this.planet);
         this.levelactual = 1;
         this.values = scene.POSSIBLE_PARTICLES.reduce((prev, cur) => {
             prev[cur] = 0;
@@ -34,9 +41,12 @@ export default class Player extends Phaser.GameObjects.Graphics {
             this.timer = 0;
         this.gfx.clear();
         this.gfx.fillStyle(0x666666, 1);
-        this.circle.x = (32 + (this.curRingPosition * 64)) * Math.cos(this.timer) + (this.scene.size / 2);
-        this.circle.y = (32 + (this.curRingPosition * 64)) * Math.sin(this.timer) + (this.scene.size / 2);
+        this.circle.x = (96 + (this.curRingPosition * 64)) * Math.cos(this.timer) + (this.scene.size / 2);
+        this.circle.y = (96 + (this.curRingPosition * 64)) * Math.sin(this.timer) + (this.scene.size / 2);
         this.setPosition(this.circle.x, this.circle.y);
+        this.circle.setPosition(this.circle.x, this.circle.y);
+        this.planet.setPosition(this.circle.x, this.circle.y);
+        //this.circle.setPosition(this.circle.x, this.circle.y);
         this.gfx.fillCircleShape(this.circle);
     }
 
@@ -48,8 +58,8 @@ export default class Player extends Phaser.GameObjects.Graphics {
 
     grow(value) {
         this.size += value/4;
-        if (this.size >= 32) {
-            this.size = 32;
+        if (this.size >= 64) {
+            this.size = 64;
         }
         if (this.size < 2) {
             this.size = 2;
@@ -111,7 +121,7 @@ export default class Player extends Phaser.GameObjects.Graphics {
                 case 2:
                     break;
                 case 3:
-                    break;  
+                    break;
             }
         }
     }

@@ -17,7 +17,6 @@ class UiScene extends Phaser.Scene {
         this.game = this.scene.get('PlanetScene');
         this.gfx = this.add.graphics();
         this.gfx.setTexture();
-
         this.width = 200;
         this.height = 150;
         this.displayZone = new Phaser.Geom.Rectangle(
@@ -35,8 +34,13 @@ class UiScene extends Phaser.Scene {
         };
 
         // Frame
-        this.gfx.fillStyle(this.colors.white, .7);
+        this.gfx.fillStyle(this.colors.white, .9);
         this.gfx.fillRectShape(this.displayZone);
+        this.gfx.fillRect(0, 0, this.cameras.main.width / 2, 50);
+        this.statusText = this.add.text(20, 12, '', {
+            font: 'bold 32px Arial',
+            fill: '#ed2378'
+        });
 
         // Texts
 
@@ -60,6 +64,11 @@ class UiScene extends Phaser.Scene {
             const hud = this;
             Object.keys(this.colors).forEach(c => hud.texts[c].setText(`■: ${hud.game.player.values[c]}`));
         }, this);
+        this.game.events.on('message', this.addMessage, this);
+    }
+
+    addMessage(message) {
+        this.statusText.setText(message);
     }
 }
 

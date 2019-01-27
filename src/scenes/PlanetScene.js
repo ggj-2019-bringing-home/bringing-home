@@ -10,7 +10,7 @@ class ModeSwitcher {
         this.minScale = .1;
         this.maxScale = 25;
         this.state = 0; // State 0 = playing, state 1 = paused
-        this.targetScale = 3;
+        this.targetScale = 2;
         this.curScale = this.maxScale;
         this.timers = [];
 
@@ -119,6 +119,7 @@ class PlanetScene extends Phaser.Scene {
             cfg.level = 1;
         }
         this.scene.bringToTop();
+        this.scene.get('UiScene').scene.bringToTop();
         //this.background = this.add.tileSprite(0, 0, 3353, 3353,'space');
         this.graphics = this.add.graphics();
         this.modeSw = new ModeSwitcher(this);
@@ -145,12 +146,12 @@ class PlanetScene extends Phaser.Scene {
         this.graphics.fillCircleShape(new Phaser.Geom.Circle(this.size / 2, this.size / 2, 32));
 
         this.graphics.lineStyle(1, 0xffffff, .4);
-        for (let l = 64 + 32; l < this.size / 2; l += 64) {
+        for (let l = 64 + 96; l < this.size / 2; l += 64) {
             this.graphics.strokeCircleShape(new Phaser.Geom.Circle(this.size / 2, this.size / 2, l))
         }
 
         let ring = 3;
-        let dist = 32 + (64 * ring);
+        let dist = 96 + (64 * ring);
         this.player = new Player(this, (this.size / 2) + dist, this.size / 2, ring);
         this.modeSw.registerTimer(this.time.addEvent({
             delay: 16.667,
