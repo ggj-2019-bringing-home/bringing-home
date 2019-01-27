@@ -1,5 +1,6 @@
 import Player from '../sprites/Player'
 import Space from '../sprites/Space'
+import SoundHandler from "../helpers/SoundHandler";
 
 class ModeSwitcher {
     constructor(scene) {
@@ -95,7 +96,7 @@ class PlanetScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'PlanetScene'
-        })
+        });
     }
 
     preload() {
@@ -109,6 +110,8 @@ class PlanetScene extends Phaser.Scene {
             'red',
             'yellow'
         ];
+        this.soundHdl = new SoundHandler(this);
+        this.soundHdl.preload();
     }
 
     create() {
@@ -159,7 +162,9 @@ class PlanetScene extends Phaser.Scene {
         this.space.riseLevel();
         this.space.riseLevel();
 
-        this.cameras.main.startFollow(this.player)
+        this.cameras.main.startFollow(this.player);
+        this.soundHdl.start();
+        this.events.on('collision', this.soundHdl.collide, this.soundHdl);
     }
 
     update(time, delta) {
