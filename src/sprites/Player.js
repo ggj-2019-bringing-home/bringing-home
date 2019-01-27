@@ -1,11 +1,14 @@
-const RING_PER_TICK = .007
-const TIMER_PER_TICK = .05
+import Planet from "./Planet";
+
+const RING_PER_TICK = .007;
+const TIMER_PER_TICK = .05;
 
 export default class Player extends Phaser.GameObjects.Graphics {
     constructor (scene, x, y, ring) {
         super(scene, {x, y});
 
         this.timer = 0;
+        this.textureSize = 129;
         this.gfx = this.scene.add.graphics();
         this.gfx.fillStyle(0x666666, 1);
         this.ring = ring;
@@ -13,6 +16,10 @@ export default class Player extends Phaser.GameObjects.Graphics {
         this.curRingPosition = ring;
         this.size = 4;
         this.circle = new Phaser.Geom.Circle(x, y, this.size);
+        this.planet = new Planet(scene, 0, 0, this.textureSize, this.circle);
+        scene.add.existing(this.planet);
+        //scene.add.existing(this.image.mask);
+
         this.values = scene.POSSIBLE_PARTICLES.reduce((prev, cur) => {
             prev[cur] = 0;
             return prev;
@@ -36,7 +43,10 @@ export default class Player extends Phaser.GameObjects.Graphics {
         this.circle.x = (32 + (this.curRingPosition * 64)) * Math.cos(this.timer) + (this.scene.size / 2);
         this.circle.y = (32 + (this.curRingPosition * 64)) * Math.sin(this.timer) + (this.scene.size / 2);
         this.setPosition(this.circle.x, this.circle.y);
-        this.gfx.fillCircleShape(this.circle);
+        this.planet.setPosition(this.circle.x, this.circle.y);
+
+        //this.gfx.setTexture(this.image);
+        //this.gfx.fillRectShape(this.imageSize);
     }
 
     switchRing(delta) {
@@ -63,17 +73,13 @@ export default class Player extends Phaser.GameObjects.Graphics {
             switch (level) {
                 case 0:
                     this.grow(1);
-                    this.rock += 1;
                     break;
                 case 1:
-                    this.water += 1;
                     break;
                 case 2:
-                    this.plant += 1;
                     break;
                 case 3:
-                    this.animal += 1;
-                    break;  
+                    break;
             }
         }
     }

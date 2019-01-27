@@ -10,11 +10,12 @@ var spicies = {
 }
 
 class Planet extends Phaser.GameObjects.Image {
-  constructor(scene, x, y, size) {
+  constructor(scene, x, y, size, circle) {
     super(scene, x, y);
     this.size = size;
     this.max = size - 1;
     this.map = [];
+    this.circle = circle;
 
     this.terrainGenerator = new TerrainGenerator(this.size);
     for (let i in this.terrainGenerator.map) {
@@ -28,6 +29,9 @@ class Planet extends Phaser.GameObjects.Image {
     this.applyTerrain();
     this.setTexture('planet');
     this.setPosition(x, y);
+    this.maskGeo = scene.make.graphics();
+    this.maskGeo.fillCircleShape(this.circle);
+    this.planetTexture.mask = new Phaser.Display.Masks.GeometryMask(scene, this.maskGeo);
 
     this.scene.time.addEvent({
       delay: 50,

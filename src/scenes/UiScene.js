@@ -1,8 +1,7 @@
 class UiScene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'UiScene',
-            active: true
+            key: 'UiScene'
         });
     }
 
@@ -17,6 +16,7 @@ class UiScene extends Phaser.Scene {
     create() {
         this.game = this.scene.get('PlanetScene');
         this.gfx = this.add.graphics();
+        this.gfx.setTexture();
 
         this.width = 200;
         this.height = 150;
