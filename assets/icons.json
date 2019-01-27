@@ -1,0 +1,249 @@
+{
+  "frames": {
+    "amphibians": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 2,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "bird": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 57,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "carnivore": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 112,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "coral": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 167,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "flowers": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 222,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "herbivore": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 277,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "herbs": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 332,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "omnivore": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 387,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "rect": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 552,
+        "y": 2,
+        "w": 51,
+        "h": 51
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 51,
+        "h": 51
+      },
+      "sourceSize": {
+        "w": 51,
+        "h": 51
+      }
+    },
+    "seaweed": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 442,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    },
+    "tick": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 552,
+        "y": 55,
+        "w": 66,
+        "h": 64
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 1,
+        "w": 66,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 66,
+        "h": 66
+      }
+    },
+    "weed": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 497,
+        "y": 7,
+        "w": 53,
+        "h": 112
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 112
+      }
+    }
+  },
+  "meta": {
+    "app": "Phaser Editor",
+    "version": "1",
+    "image": "icons.png"
+  }
+}
