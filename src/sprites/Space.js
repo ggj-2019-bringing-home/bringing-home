@@ -1,3 +1,4 @@
+import colorUtil from 'color';
 export default class Space extends Phaser.GameObjects.Graphics {
     constructor (scene, planet) {
         super(scene, {x: 0, y: 0});
@@ -33,12 +34,13 @@ export default class Space extends Phaser.GameObjects.Graphics {
     createEmitter(color) {
         const particles = this.scene.add.particles('rocks');
         const colorHex = this.scene.scene.get('UiScene').colors[color];
+        const desat = [.3, .5, .7].map(m => colorUtil(colorHex).desaturate(m).darken(m).rgbNumber());
         this.emitter[color] = particles.createEmitter({
             frame: this.particleTypes,
-            speed: { min: -.1, max: .1 },
-            lifespan: 2000,
-            quantity: 10,
-            tint: [colorHex],
+            speed: 0,
+            lifespan: 7000,
+            quantity: .1,
+            tint: desat,
             scale: .1,
             alpha: { max: 1, min: .5 },
             rotate: {min:0, max: 359},
@@ -47,6 +49,7 @@ export default class Space extends Phaser.GameObjects.Graphics {
             deathZone: { type: 'onEnter', source: this.deathZone.circle },
             deathCallback: (p) => this.hitCheck(p, color)
         });
+        this.scene.modeSw.registerTimer(this.emitter[color]);
     }
 
     riseLevel(sub = false) {

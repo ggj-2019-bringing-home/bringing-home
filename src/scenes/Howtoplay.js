@@ -65,7 +65,7 @@ export default class Howtoplay extends Phaser.Scene {
         );
 
         this.input.once('pointerdown', function (event) {
-            this.scene.start('IntroScene', {level: 1});
+            this.scene.start('IntroScene', {level: 3});
         }, this);
     }
 }

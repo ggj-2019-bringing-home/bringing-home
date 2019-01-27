@@ -53,11 +53,11 @@ export default class IntroScene extends Phaser.Scene {
                 coral: 'CORAL are eating SEAWEED and\nhates cold weather.'
             },
             {
-                herbivore: 'HERBIVORE are eating the HERB and FLOWERS.\n',
-                omnivore: 'OMNIVORE are eating WEED and CARNIVORE.\n',
-                carnivore: 'CARNIVORE are eating BIRDS and Herbivore.\n',
-                birds: 'BIRDS are eating AMPHIBIANS.\n',
-                amphibians: 'AMPHIBIANS are eating Coral and Omnivore.\n'
+                herbivore: 'HERBIVORE are eating the HERB\n and FLOWERS.',
+                omnivore: 'OMNIVORE are eating WEED\n and CARNIVORE.',
+                carnivore: 'CARNIVORE are eating BIRDS\n and HERBIVORE.',
+                bird: 'BIRDS are eating AMPHIBIANS.\n',
+                amphibians: 'AMPHIBIANS are eating CORAL\n and OMNIVORE.'
             }
         ];
     }
