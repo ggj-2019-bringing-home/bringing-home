@@ -68,31 +68,47 @@ export default class Player extends Phaser.GameObjects.Graphics {
             if (this.values.white > 20) {
                 let babol = this.values.white+this.values.blue;
                 babol = this.values.white/babol;
-                if (babol < .2)
+                if (babol > .9 || babol < 0.1)
                 {
-                    this.scene.sys.events.emit('message', '20% rock');
+                    this.scene.sys.events.emit('message', 'Planet is dead');
                 }
-                else if (babol < .4)
+                else if (babol > .8)
                 {
-                    this.scene.sys.events.emit('message', '40% rock');
+                    this.scene.sys.events.emit('message', 'approx 80% rock');
                 }
-                else if (babol < .6)
+                else if (babol > .6)
                 {
-                    this.scene.sys.events.emit('message', '60% rock');
+                    this.scene.sys.events.emit('message', 'approx 60% rock');
                 }
-                else if (babol < .8)
+                else if (babol > .55)
                 {
-                    this.scene.sys.events.emit('message', '80% rock');
+                    this.scene.sys.events.emit('message', 'approx 55% rock');
                 }
-                else if (babol < .9)
+                else if (babol > .5)
                 {
-                    this.scene.sys.events.emit('message', 'planet is dead');
+                    this.scene.sys.events.emit('message', 'approx 50% rock');
+                }
+                else if (babol > .45)
+                {
+                    this.scene.sys.events.emit('message', 'approx 45% rock');
+                }
+                else if (babol > .4)
+                {
+                    this.scene.sys.events.emit('message', 'approx 40% rock');
+                }
+                else if (babol > .2)
+                {
+                    this.scene.sys.events.emit('message', 'approx 20% rock');
                 }
             }
             if (this.values.white >= 20 && this.values.blue >= 20 && this.levelactual == 1) {
                 this.levelactual++;
                 this.scene.space.riseLevel();
                 //this.scene.modeSw.pause();
+            }
+            if (this.values.green >= 25 && this.levelactual == 2) {
+                this.levelactual++;
+                this.scene.space.riseLevel();
             }
 /*            if (the plant we wants && this.levelactual == 2) {
                 this.levelactual++;
